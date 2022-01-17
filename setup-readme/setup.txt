@@ -1,0 +1,32 @@
+- create emply file names 'ssh' in boot partition
+- create 'wpa_supplicant.conf' in boot partition with the following content
+
+country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid="NES-WiFi"
+    scan_ssid=1
+    psk="distrines"
+    key_mgmt=WPA-PSK
+}
+> passwd
+- set new password
+> raspi-config enable camera
+> sudo apt-get update
+> sudo apt-get install cmake
+- Download https://github.com/raspberrypi/userland
+- unzip userland
+- goto directory userland
+> sudo mkdir build
+> cd build
+> sudo cmake -DCMAKE_BUILD_TYPE=Release ..
+> sudo make
+> sudo make install
+- edit .profile and add the following line
+  export LD_LIBRARY_PATH=/opt/vc/lib
+
+
+  
+

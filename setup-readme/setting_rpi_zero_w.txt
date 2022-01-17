@@ -1,0 +1,1 @@
+https://www.pyimagesearch.com/2015/12/14/installing-opencv-on-your-raspberry-pi-zero/

@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style> 
+            img { 
+                width:100%; 
+                height:100%; 
+            } 
+            car1 { 
+   				position: absolute; 
+   				top: 100px; 
+   				left: 100px; 
+   				color:blue;
+   				font-size:9px;
+   				background-color: white;
+   				border-style:solid;
+ 				border-color:red;
+ 				border-width: thin;
+ 				white-space: pre;
+				}
+			car2 { 
+   				position: absolute; 
+   				top: 100px; 
+   				left: 150px; 
+   				color:blue;
+   				font-size:9px;
+   				background-color: white;
+   				border-style:solid;
+ 				border-color:red;
+ 				border-width: thin;
+ 				white-space: pre;
+				}
+			car3 { 
+   				position: absolute; 
+   				top: 100px; 
+   				left: 200px; 
+   				color:blue;
+   				font-size:9px;
+   				background-color: white;
+   				border-style:solid;
+ 				border-color:red;
+ 				border-width: thin;
+ 				white-space: pre;
+				}
+			car4 { 
+   				position: absolute; 
+   				top: 100px; 
+   				left: 200px; 
+   				color:blue;
+   				font-size:9px;
+   				background-color: white;
+   				border-style:solid;
+ 				border-color:red;
+ 				border-width: thin;
+ 				white-space: pre;
+				}
+			car5 { 
+   				position: absolute; 
+   				top: 100px; 
+   				left: 200px; 
+   				color:blue;
+   				font-size:9px;
+   				background-color: white;
+   				border-style:solid;
+ 				border-color:red;
+ 				border-width: thin;
+ 				white-space: pre;
+				}
+        </style> 
+	</head>
+
+	<body>
+		<body style="font-family:Arial" onload="onLoadFunction()">
+		<img id="map" src="map.jpg" alt="map.jpg">
+		<car1 id="car1"><i class="fa fa-car"></i><br></car1>
+
+		
+		<script>
+    
+    function onLoadFunction() {
+      var params = decodeURI(window.location.search);
+      params = params.substring(1, params.length);
+
+      var realData = JSON.parse(params);
+
+
+      var img = document.getElementById('map'); 
+      var y = img.clientWidth;
+      var x = img.clientHeight;
+      console.log(img);
+      console.log("img width = "+y);
+      console.log("img height = "+img.clientHeight);
+
+      // Map real world to map in pixels per meter
+      var y_multiplier = y/2333.19;
+      var x_multiplier = x/556.96;   
+
+      //console.log("width_mult = "+y_multiplier);
+      //console.log("height_mult = "+x_multiplier);  
+
+      world_origin_y = (y/2544)*833;
+      world_origin_x = (x/608)*206;
+      console.log("World origin: "+world_origin_x+","+world_origin_y);
+
+      var car1_id = realData.ID;
+      var car1_x = (realData.X)*x_multiplier + world_origin_x;
+      var car1_y = (realData.Y)*y_multiplier + world_origin_y;
+      console.log("Car "+car1_id+" X="+car1_x+" Y="+car1_y);
+      if (car1_id !=0) {
+        document.getElementById("car1").style.top = ""+car1_x+"px";;
+        document.getElementById("car1").style.left = ""+car1_y+"px";
+        document.getElementById("car1").appendChild(document.createTextNode(car1_id));
+      }
+      else {
+        var element = document.getElementById("car1");
+        element.parentNode.removeChild(element);
+      }
+
+    }
+		</script>
+	</body>
+
+</html>
